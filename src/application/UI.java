@@ -19,7 +19,7 @@ public class UI {
         if (piece == null) { //there no piece on the index
             System.out.print("-");
         } else {
-            System.out.println(piece);
+            System.out.print(piece);
         }
         System.out.print("  ");
     }
