@@ -1,8 +1,6 @@
 package chess;
 
 import boardgame.Board;
-import boardgame.Piece;
-import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
@@ -58,20 +56,55 @@ public class ChessMatch {
     }
 
     /**
+     * Places a new chess piece on the board at the specified position.
+     * <p>
+     * This method simplifies the placement of chess pieces by converting the
+     * given board position (in chess notation) into an internal position format.
+     * The column is represented by a letter (e.g., 'a', 'b', 'c', etc.), and the
+     * row is a number (1-8). The method maps the column from chess notation into
+     * an integer index, where 'a' maps to 0, 'b' maps to 1, and so on.
+     * </p>
+     *
+     * <p>
+     * Example of column conversion:
+     * <ul>
+     *     <li>'a' - 'a' = 0</li>
+     *     <li>'b' - 'a' = 1</li>
+     *     <li>'c' - 'a' = 2</li>
+     *     <li> . . . . . . </li>
+     * </ul>
+     * </p>
+     *
+     * @param column the column (in chess notation, a, b, c...) where the piece should be placed
+     * @param row the row (1-8) where the piece should be placed
+     * @param piece the chess piece to be placed on the board
+     * @see ChessPosition
+     */
+    private void placeNewPiece(char column, int row, ChessPiece piece){
+        board.placePiece(piece, new ChessPosition(column, row).toPosition());
+    }
+
+    /**
      * Sets up the initial configuration of the match, placing the
      * pieces on the board.
      * <p>
      * This method set positions the pieces on the chessboard. The {@code Rook}
-     * is placed at position (2, 1), and the {@code King} are placed at position (0, 4) and
-     * (7, 4).
+     * are placed at position (b, 6), and the {@code King} are placed at position (e, 8).
      * </p>
+     *
+     * @see Rook
+     * @see King
      */
     private void initialSetup() {
-        board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
-        board.placePiece(new King(board, Color.BLACK), new Position(0, 4));
-        board.placePiece(new King(board, Color.BLACK), new Position(7, 4));
-        //board.placePiece(new King(board, Color.BLACK), new Position(2, 1));
-        //board.placePiece(new King(board, Color.BLACK), new Position(9, 0));
+        placeNewPiece('b', 6,new Rook(board, Color.WHITE));
+        placeNewPiece('e', 8,new King(board, Color.WHITE));
+
+        /** @Deprecated */
+        //board.placePiece(new King(board, Color.BLACK), new Position(7, 4)); //old way to put piece on the board
+        /** @Deprecated */
+        //board.placePiece(new King(board, Color.BLACK), new Position(2, 1)); //testing exception
+        /** @Deprecated */
+        //board.placePiece(new King(board, Color.BLACK), new Position(9, 0)); //testing exception
 
     }
 }
