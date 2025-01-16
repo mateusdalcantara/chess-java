@@ -1,32 +1,35 @@
-package boardgame;
+package com.mateusdalcantara.boardgame;
 
 /**
  * Represents a game board with rows, columns, and pieces.
- * <p>
+ *
  * The {@code Board} class defines the layout of a game board, where
  * each position on the board can hold a {@code Piece}. It provides methods for
  * accessing, manipulate and the pieces placed on the board.
- * </p>
+ * <
  *
  * @see Piece
  * @see Position
+ * @see BoardException
  */
 public class Board {
 
+    /** Variable to hold the number of rows */
     private int rows;
+    /** Variable to hold the number of columns */
     private int columns;
+    /** 2D array to hold pieces on the board */
     private Piece[][] pieces;
 
     /**
      * Constructs a new {@code Board} with the specified number of rows and columns.
-     * <p>
-     * This constructor initializes a new board with the given dimensions (rows and columns),
-     * creating a 2D array to hold the pieces the pieces placed on the board.
-     * </p>
      *
-     * @param rows    the number of rows on the board. Must be at least 1
-     * @param columns the number of columns on the board. Must be at least 1
-     * @throws BoardException if the numbers of rows or columns is less than 1
+     * This constructor initializes a new board with the given dimensions (rows and columns),
+     * creating a 2D array to hold the pieces placed on the board.
+     *
+     * @param rows    the number of rows on the board. Must be at least 1.
+     * @param columns the number of columns on the board. Must be at least 1.
+     * @throws BoardException if the number of rows or columns is less than 1.
      */
     public Board(int rows, int columns) {
         if (rows < 1 || columns < 1) {
@@ -36,12 +39,8 @@ public class Board {
         this.columns = columns;
         pieces = new Piece[rows][columns];
     }
-
     /**
      * Returns the number of rows on the board.
-     * <p>
-     * This method provides access to the number of rows in the board.
-     * </p>
      *
      * @return the number of rows on the board.
      */
@@ -51,9 +50,6 @@ public class Board {
 
     /**
      * Returns the number of columns on the board.
-     * <p>
-     * This method provides access to the number of columns in the board.
-     * </p>
      *
      * @return the number of columns on the board.
      */
@@ -63,10 +59,8 @@ public class Board {
 
     /**
      * Returns the piece located at the specified row and column.
-     * <p>
      * This method retrieves the {@code Piece} object located at the
      * specified position on the board using the provided row and column coordinates.
-     * </p>
      *
      * @param row    the row of the piece.
      * @param column the column of the piece.
@@ -82,10 +76,8 @@ public class Board {
 
     /**
      * Returns the piece located at the specified position.
-     * <p>
      * This method retrieves the {@code Piece} object located at the position
      * specified by the {@code Position} object.
-     * </p>
      *
      * @param position the {@code Position} object representing the piece's location.
      * @return the {@code Piece} located at the specified position.
@@ -100,12 +92,10 @@ public class Board {
 
     /**
      * Places a {@code Piece} at the specified position on the board.
-     * <p>
      * This method places a {@code Piece} at a specific location on the board
      * and updates the position of the piece accordingly.
-     * </p>
      *
-     * @param piece    the piece to place on the board.
+     * @param piece the piece to place on the board.
      * @param position the position where the piece will be placed.
      * @throws BoardException if there is already a piece at the specified position.
      */
@@ -118,11 +108,29 @@ public class Board {
     }
 
     /**
+     * Removes the piece at the specified {@code Position} and returns it.
+     *
+     * @param position the position from which to remove the piece.
+     * @return the {@code Piece} that was removed, or {@code null} if there was no piece at the position.
+     * @throws BoardException if the position does not exist on the board.
+     * */
+    public Piece removePiece(Position position) {
+        if (!positionExists(position)) {
+            throw new BoardException("Position not on the board");
+        }
+        if (piece(position) == null) {
+            return null;
+        }
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return aux;
+    }
+
+    /**
      * Checks if the given row and column are within the bound of the board.
-     * <p>
      * this method verifies if the provided row and column indices are valid for
      * the current board dimensions.
-     * </p>
      *
      * @param row    the row index.
      * @param column the column index.
@@ -134,10 +142,8 @@ public class Board {
 
     /**
      * Checks if the given position is within the bounds of the board.
-     * <p>
      * This method verifies if the provided {@code Position} object corresponds
      * to a valid location on the board.
-     * </p>
      *
      * @param position the {@code Position} object to check.
      * @return {@code true} if the position exists on the board,
@@ -149,9 +155,8 @@ public class Board {
 
     /**
      * Checks if there is a piece at the specified position.
-     * <p>
      * This method verifies whether a piece exists at the given position on the board.
-     * </p>
+     *
      *
      * @param position the position to check.
      * @return {@code true} if there is a piece at the position, {@code false} otherwise.

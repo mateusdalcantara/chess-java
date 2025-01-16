@@ -1,25 +1,29 @@
-package boardgame;
+package com.mateusdalcantara.boardgame;
 /**
  * Represents a position on a board with a row and a column.
- * <p>
+ *
  * The {@code Position} class is used to define a location on a board, with two
  * coordinates: {@code row} and {@code column}. It is commonly used in games
  * that involve a grid or matrix-based board, such as chess or other board games.
- * </p>
+ *
  *
  * @see Board
  * @see Piece
  */
 public class Position {
+
+    /** The row of the position on the board. Represents the horizontal coordinate. */
     private int row;
+
+    /** The column of the position on the board. Represents the vertical coordinate. */
     private int column;
 
     /**
      * Constructs a new {@code Position} with the specified row and column.
-     * <p>
+     *
      * This constructor initializes a position using the provided row and column
      * values, representing the location on a grid.
-     * </p>
+     *
      *
      * @param row the row of the position on the board.
      * @param column the column of the position on the board.
@@ -30,9 +34,9 @@ public class Position {
     }
     /**
      * Returns the row of this position.
-     * <p>
+     *
      * This method provides access to the row coordinate of the position.
-     * </p>
+     *
      *
      * @return the row of the position.
      */

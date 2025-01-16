@@ -1,16 +1,16 @@
-package chess;
+package com.mateusdalcantara.chess;
 
-import boardgame.Board;
-import boardgame.Piece;
+import com.mateusdalcantara.boardgame.Board;
+import com.mateusdalcantara.boardgame.Piece;
 
 /**
- *  Represent a ChessPiece on chess board.
- *  <p>
- *      The {@code chessPiece} class is a subclass of {@code Piece} that adds
- *      functionality, such as color, to the chess piece. This class serves as a base
- *      for chess pieces like (Rook, King, Knight, etc), each of which has a color associated
- *      to distinguish between players.
- *  </p>
+ * Represent a ChessPiece on chess board.
+ *
+ * The {@code chessPiece} class is a subclass of {@code Piece} that adds
+ * functionality, such as color, to the chess piece. This class serves as a base
+ * for chess pieces like (Rook, King, Knight, etc), each of which has a color associated
+ * to distinguish between players.
+ *
  *
  * @see Piece
  * @see Board
@@ -18,7 +18,9 @@ import boardgame.Piece;
  * */
 public class ChessPiece extends Piece {
 
+    /** The color of the chess pieces on the board for the chess match. */
     private Color color;
+
 
     /**
      *  This constructor build a chess piece with specific color.
