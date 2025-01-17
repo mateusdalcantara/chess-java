@@ -110,6 +110,26 @@ public class UI {
      */
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+
+
+    //https://stackoverflow.com/questions/2979383/how-to-clear-the-console-using-java
+    /**
+     * This method clean the terminal after use.
+     *
+     * This method send an ANSI escape sequence to the terminal to clear the screen and
+     * move the cursor to the top-left corner. It is typically used to clean the console
+     * display when running a command-line application.
+     *
+     * Note: This method may not work in all environments. It is designed for terminals
+     * that support ANSI escape codes, such as most Linux and macOS terminals. On Windows,
+     * it may require a PowerShell or some emulators(Git Bash and Windows Terminal).
+     *
+     * */
+    public static void clearScreen(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static ChessPosition readChessPosition(Scanner sc){
 
         try {
