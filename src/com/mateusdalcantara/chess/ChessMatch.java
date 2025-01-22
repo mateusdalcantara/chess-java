@@ -94,16 +94,23 @@ public class ChessMatch {
     }
 
     /**
-     * Validates that the source position contains a piece.
+     * Validates that the source position on the chess board contains a piece and that the piece has at
+     * least one possible move.
      *
-     * This method checks if there is a piece at the given source position.
+     * * This method performs two checks:
+     *  * 1. It verifies that there is a piece at the given position on the board.
+     *  * 2. It checks whether the piece at that position has any valid moves available.
      *
-     * @param position the position to check.
+     * @param position the position on the board to check.
      * @throws ChessException if there is no piece at the source position.
+     * @throws ChessException if the piece at the source position has no possible moves.
      * */
     private void validateSourcePosition(Position position){
         if (!board.thereIsAPiece(position)){
             throw new ChessException("There is no piece on source position.");
+        }
+        if (!board.piece(position).isThereAnyPossibleMove()){
+            throw new ChessException("There is no possible moves for the chosen piece");
         }
     }
 

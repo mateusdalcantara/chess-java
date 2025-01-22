@@ -16,7 +16,7 @@ import com.mateusdalcantara.boardgame.Piece;
  * @see Board
  * @see Color
  * */
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
 
     /** The color of the chess pieces on the board for the chess match. */
     private Color color;

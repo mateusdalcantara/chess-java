@@ -42,7 +42,28 @@ public class King extends ChessPiece {
      * @return the string "K" representing the King.
      */
     @Override
-    public String toString(){
+    public String toString() {
         return "K";
+    }
+
+    /**
+     *
+     * Calculates the possible moves for the King piece.
+     * <p>
+     * This method returns a 2D array of boolean values, where each cell represents
+     * a square on the board.
+     * The value {@code true} indicates that the square is a valid move for the King,
+     * while {@code false} indicates an invalid move.
+     * <p>
+     * The King can move horizontally and vertically any number of squares, as long as
+     * the path is not blocked by other pieces.
+     * </p>
+     *
+     * @return a 2D array representing the possible moves for the King piece.
+     */
+    @Override
+    public boolean[][] possibleMoves() {
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        return mat;
     }
 }

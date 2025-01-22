@@ -44,4 +44,24 @@ public class Rook extends ChessPiece {
     public String toString() {
         return "R";
     }
+
+
+    /**
+     * Calculates the possible moves for the Rook piece.
+     * <p>
+     * This method returns a 2D array of boolean values, where each cell represents a square
+     * on the board. The value {@code true} indicates that the square is a valid move for the Rook,
+     * while {@code false} indicates an invalid move.
+     * <p>
+     * The Rook can move horizontally and vertically any number of squares, as long as the path
+     * is not blocked by other pieces.
+     * </p>
+     *
+     * @return a 2D array representing the possible moves for the Rook piece.
+     */
+    @Override
+    public boolean[][] possibleMoves() {
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        return mat;
+    }
 }
