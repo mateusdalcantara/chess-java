@@ -80,6 +80,10 @@ public class Position {
         this.column = column;
     }
 
+    public void setValues(int row, int column){
+        this.row = row;
+        this.column = column;
+    }
 
     /**
      * Returns a string representation of this position in the format "row, column".

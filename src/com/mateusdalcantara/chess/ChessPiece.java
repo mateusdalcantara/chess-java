@@ -2,6 +2,7 @@ package com.mateusdalcantara.chess;
 
 import com.mateusdalcantara.boardgame.Board;
 import com.mateusdalcantara.boardgame.Piece;
+import com.mateusdalcantara.boardgame.Position;
 
 /**
  * Represent a ChessPiece on chess board.
@@ -40,6 +41,11 @@ public abstract class ChessPiece extends Piece {
      * */
     public Color getColor() {
         return color;
+    }
+
+    protected boolean isThereOpponentPiece(Position position){
+        ChessPiece p = (ChessPiece)getBoard().piece(position);
+        return p != null && p.getColor() != color;
     }
 
 }
