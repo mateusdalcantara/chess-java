@@ -48,6 +48,7 @@ public class Program {
                 System.out.println();
                 System.out.print("Source: ");
 
+
                 /**
                  * Executes a chess move based on user input and performs the move on the chess match.
                  *
@@ -62,8 +63,16 @@ public class Program {
                  * @return The piece that was captured (if any), or null if no piece was captured.
                  * */
                 ChessPosition source = UI.readChessPosition(sc); // Read the source position from user input.
+
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces(), possibleMoves);
+
+
                 System.out.println(); // Print a blank line for readability.
                 System.out.println("Target: "); // Prompt the user for the target position.
+
+
                 ChessPosition target = UI.readChessPosition(sc); // Read the target position from user input.
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target); // Perform the chess move and capture any piece.
 

@@ -161,7 +161,19 @@ public class UI {
         for (int i = 0; i < pieces.length; i++) {
             System.out.print((8 - i) + " "); // Print the row number (from 8 to 1)
             for (int j = 0; j < pieces.length; j++) {
-                printPiece(pieces[i][j]); // Print each piece or "-" if no piece is present
+                printPiece(pieces[i][j], false); // Print each piece or "-" if no piece is present
+            }
+            System.out.println();
+        }
+        System.out.print("  a b c d e f g h"); // Print the column labels
+
+    }
+
+    public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
+        for (int i = 0; i < pieces.length; i++) {
+            System.out.print((8 - i) + " "); // Print the row number (from 8 to 1)
+            for (int j = 0; j < pieces.length; j++) {
+                printPiece(pieces[i][j], possibleMoves[i][j]); // Print each piece or "-" if no piece is present
             }
             System.out.println();
         }
@@ -178,10 +190,13 @@ public class UI {
      *
      * @param piece The {@code ChessPiece} to be printed, or {@code null} if the position is empty (no piece present).
      */
-    private static void printPiece(ChessPiece piece) {
+    private static void printPiece(ChessPiece piece, boolean backGround) {
+        if (backGround){
+            System.out.print(ANSI_BLUE_BACKGROUND);
+        }
         if (piece == null) {
             // Print a hyphen if the square is empty
-            System.out.print("-");
+            System.out.print("-" + ANSI_RESET);
         } else {
             // Print piece with appropriate color (white or black)
             if (piece.getColor() == Color.WHITE) {
